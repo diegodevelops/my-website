@@ -13,8 +13,8 @@ export default function Home({ allPostsData }) {
       <section className={styles.cont}>
         <br /><br /><br />
         <img src='/images/profile.jpg' />
-        <br />
-        <p><b>Hi!</b> Welcome to my website! I still need to work on it 😅.</p>
+        <h2>Diego A. Pérez Parés</h2>
+        <p>Hi! Welcome to my website! I still need to work on it 😅.</p>
         <p>
           But for know, you can see my resume <a target='blank' href='/web-resume-2024.pdf'>here</a>.
         </p>
