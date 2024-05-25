@@ -1,50 +1,28 @@
 
 import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
-import { getSortedPostsData } from '../lib/posts'
-import Link from 'next/link'
-import Date from '../components/date'
-
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
-  return {
-    props: {
-      allPostsData
-    }
-  }
-}
+import styles from '../styles/home.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons"
 
 export default function Home({ allPostsData }) {
   return (
-    <Layout home>
+    <>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{"Diego Pérez"}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-        <p>Hi! Welcome to my blog!</p>
+      <section className={styles.cont}>
+        <br /><br /><br />
+        <img src='/images/profile.jpg' />
+        <br />
+        <p><b>Hi!</b> Welcome to my website! I still need to work on it 😅.</p>
         <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
+          But for know, you can see my resume <a target='blank' href='/web-resume-2024.pdf'>here</a>.
         </p>
+        <div className={styles.social}>
+          <a target='blank' href='https://github.com/diegodevelops'><li><FontAwesomeIcon icon={faGithub} /></li></a>
+          <a target='blank' href='https://www.linkedin.com/in/diego-perez-961bb4115/'><li><FontAwesomeIcon icon={faLinkedin} /></li></a>
+        </div>
       </section>
-
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </Layout>
+    </>
   )
 }
